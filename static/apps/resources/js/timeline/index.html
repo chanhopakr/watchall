@@ -1,0 +1,289 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="/static/apps/resources/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/static/apps/resources/js/splunk/splunk.ui.timeline.js"></script>
+</head>
+<body>
+    <div class="FlashTimeline">
+        <div class="TimelineContainer" style="width:100%; height:100%;" id="timeline-container"></div>
+    </div>
+
+    <script language="javascript">
+
+    var LOCALE = parent.LOCALE || 'ko_kr';
+    var DateTime = splunkjs.UI.Timeline.DateTime;
+    var SimpleTimeZone = splunkjs.UI.Timeline.SimpleTimeZone;
+
+    var formatNumber = function(num) {
+        var pos = Math.abs(num);
+        if ((pos > 0) && ((pos < 1e-3) || (pos >= 1e9))) {
+            return num.toExponential(2).replace(/e/g, "E").replace(/\+/g, "");
+        }
+
+        var str = String(Number(num.toFixed(3)));
+        var dotIndex = str.indexOf(".");
+        if (dotIndex < 0) {
+            dotIndex = str.length;
+        }
+        var str2 = str.substring(dotIndex, str.length);
+        var i;
+        for (i = dotIndex - 3; i > 0; i -= 3) {
+            str2 = "," + str.substring(i, i + 3) + str2;
+        }
+        str2 = str.substring(0, i + 3) + str2;
+        return str2;
+    };
+    var formatNumericString = function(strSingular, strPlural, num) {
+        var str = (Math.abs(num) === 1) ? strSingular : strPlural;
+        str = str.split("%s").join(formatNumber(num));
+        return str;
+    };
+    var formatDate = function(time, timeZoneOffset, dateFormat) {
+        var date = new DateTime(time);
+        date = date.toTimeZone(new SimpleTimeZone(timeZoneOffset));
+
+        if (LOCALE == 'ko_kr') {
+            var monthNames = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ];
+            var monthShortNames = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ];
+            var weekdayShortNames = [ "\uc77c", "\uc6d4", "\ud654", "\uc218", "\ubaa9", "\uae08", "\ud1a0" ];
+
+            switch (dateFormat) {
+                case "EEE MMM d":
+                    return monthShortNames[date.getMonth() - 1] + "\uc6d4 " + date.getDay() + "\uc77c (" + weekdayShortNames[date.getWeekday()] + ")";
+                case "MMMM":
+                    return monthNames[date.getMonth() - 1] + "\uc6d4";
+                case "yyyy":
+                    return String(date.getYear()) + '\ub144';
+                default:
+                    return date.getYear() + "\ub144 " + monthShortNames[date.getMonth() - 1] + "\uc6d4 " + date.getDay() + "\uc77c";
+            }
+        } else { // US
+            var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+            var monthShortNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+            var weekdayShortNames = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+
+            switch (dateFormat) {
+                case "EEE MMM d":
+                    return  weekdayShortNames[date.getWeekday()] + " " + monthShortNames[date.getMonth() - 1] + " " + date.getDay();
+                case "MMMM":
+                    return monthNames[date.getMonth() - 1];
+                case "yyyy":
+                    return String(date.getYear());
+                default:
+                    return monthShortNames[date.getMonth() - 1] + " " + date.getDay() + ", " + date.getYear();
+            }
+        }
+    };
+
+    var formatTime = function(time, timeZoneOffset, timeFormat) {
+        var date = new DateTime(time);
+        date = date.toTimeZone(new SimpleTimeZone(timeZoneOffset));
+
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = Math.floor(date.getSeconds());
+        var milliseconds = Math.floor((date.getSeconds() - seconds) * 1000);
+
+        if (LOCALE == 'ko_kr') {
+            var ampm = (hours < 12) ? "\uc624\uc804" : "\uc624\ud6c4";
+        } else { // US
+            var ampm = (hours < 12) ? "AM" : "PM";
+        }
+
+        if (hours >= 12) {
+            hours -= 12;
+        }
+        if (hours === 0) {
+            hours = 12;
+        }
+
+        hours = ("" + hours);
+        minutes = (minutes < 10) ? ("0" + minutes) : ("" + minutes);
+        seconds = (seconds < 10) ? ("0" + seconds) : ("" + seconds);
+        milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? ("00" + milliseconds) : ("0" + milliseconds) : ("" + milliseconds);
+
+        if (LOCALE == 'ko_kr') {
+            switch (timeFormat)
+            {
+                case "short":
+                    return ampm + " " + hours + ":" + minutes;
+                case "medium":
+                    return ampm + " " + hours + ":" + minutes + ":" + seconds;
+                case "long":
+                case "full":
+                    return ampm + " " + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+                default:
+                    if (milliseconds !== "000") {
+                        return ampm + " " + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+                    }
+                    if (seconds !== "00") {
+                        return ampm + " " + hours + ":" + minutes + ":" + seconds;
+                    }
+                    return ampm + " " + hours + ":" + minutes;
+            }
+        } else { // US
+            switch (timeFormat)
+            {
+                case "short":
+                    return hours + ":" + minutes + " " + ampm;
+                case "medium":
+                    return hours + ":" + minutes + ":" + seconds + " " + ampm;
+                case "long":
+                case "full":
+                    return hours + ":" + minutes + ":" + seconds + "." + milliseconds + " " + ampm;
+                default:
+                    if (milliseconds !== "000") {
+                        return hours + ":" + minutes + ":" + seconds + "." + milliseconds + " " + ampm;
+                    }
+                    if (seconds !== "00") {
+                        return hours + ":" + minutes + ":" + seconds + " " + ampm;
+                    }
+                    return hours + ":" + minutes + " " + ampm;
+            }
+        }
+    };
+    var formatDateTime = function(time, timeZoneOffset, dateFormat, timeFormat) {
+        return formatDate(time, timeZoneOffset, dateFormat) + " " + formatTime(time, timeZoneOffset, timeFormat);
+    };
+    var formatTooltip = function(earliestTime, latestTime, earliestOffset, latestOffset, eventCount) {
+        if (LOCALE == 'ko_kr') {
+            return formatNumericString("%s event", "%s events", eventCount) + " / " + formatDateTime(earliestTime, earliestOffset) + " ~ " + formatDateTime(latestTime, latestOffset);
+        } else {
+            return formatNumericString("%s event", "%s events", eventCount) + " from " + formatDateTime(earliestTime, earliestOffset) + " to " + formatDateTime(latestTime, latestOffset);
+        }
+    };
+    var formatRange = function(duration)
+    {
+        var str = "";
+        if (LOCALE == 'ko_kr') {
+            if (duration.years > 0)
+                str += formatNumericString("%s \ub144 ", "%s \ub144 ", duration.years);
+            if (duration.months > 0)
+                str += formatNumericString("%s \uc6d4 ", "%s \uc6d4 ", duration.months);
+            if (duration.days > 0)
+                str += formatNumericString("%s \uc77c ", "%s \uc77c ", duration.days);
+            if (duration.hours > 0)
+                str += formatNumericString("%s \uc2dc ", "%s \uc2dc ", duration.hours);
+            if (duration.minutes > 0)
+                str += formatNumericString("%s \ubd84 ", "%s \ubd84 ", duration.minutes);
+            if (duration.seconds > 0)
+                str += formatNumericString("%s \ucd08 ", "%s \ucd08 ", Math.floor(duration.seconds * 1000) / 1000);
+        } else { // US
+            if (duration.years > 0)
+                str += formatNumericString("%s year ", "%s years ", duration.years);
+            if (duration.months > 0)
+                str += formatNumericString("%s month ", "%s months ", duration.months);
+            if (duration.days > 0)
+                str += formatNumericString("%s day ", "%s days ", duration.days);
+            if (duration.hours > 0)
+                str += formatNumericString("%s hour ", "%s hours ", duration.hours);
+            if (duration.minutes > 0)
+                str += formatNumericString("%s minute ", "%s minutes ", duration.minutes);
+            if (duration.seconds > 0)
+                str += formatNumericString("%s second ", "%s seconds ", Math.floor(duration.seconds * 1000) / 1000);
+        }
+
+        return str;
+    }
+
+    splunkjs.UI.Timeline.Timeline.prototype.init = (function(init) {
+        function init2(el) {
+            var format = {
+                formatNumericString : formatNumericString,
+                formatNumber        : formatNumber,
+                formatDate          : formatDate,
+                formatTime          : formatTime,
+                formatDateTime      : formatDateTime,
+                formatTooltip       : formatTooltip,
+                formatRange         : formatRange
+            };
+            init.call(this, el, format); // call original init(), and share this
+        }
+        return init2;
+    })(splunkjs.UI.Timeline.Timeline.prototype.init); // init override
+
+    var timeline = new splunkjs.UI.Timeline.Timeline($("#timeline-container")).timeline;
+    timeline.updateTimeline = function(duration, data) {
+        this.clearSelectionRange();
+        this._updateComplete(this.buildBuckets(duration, data));
+    };
+    timeline.clearSelectionRange = function() { // clearSelectionRange, selectAll, deselect
+        this._viewMinimum = NaN;
+        this._viewMaximum = NaN;
+        this._selectionMinimum = NaN;
+        this._selectionMaximum = NaN;
+        this._actualSelectionMinimum = NaN;
+        this._actualSelectionMaximum = NaN;
+
+        this._rangeMarker.setMinimum(null);
+        this._rangeMarker.setMaximum(null);
+        this._updateSelectionRange(false);
+    };
+    timeline.buildBuckets = function(duration, _data) {
+        if (_data == null || _data.length == 0)
+            return;
+
+        if (!duration) {
+            duration = 300;
+        }
+        //var DateTime = jg_import("splunk.time.DateTime");
+        var DateTime = splunkjs.UI.Timeline.DateTime;
+
+        var buckets = [];
+        var sum = 0;
+        for (var i = 0, l = _data.length; i < l; i++) {
+            //var duration = 300;
+            buckets.push({
+                earliestTime: new DateTime(Number( _data[i][0] )),
+                //cursorTime: new DateTime(Number( _data[i][0] )),
+                latestTime: new DateTime(Number( _data[i][0]+duration )),
+                eventCount: Number( _data[i][1]),
+                //duration: Number( 300),
+                duration: Number(duration),
+                eventAvailableCount: Number( _data[i][1]),
+
+                earliestOffset: Number( 32400 ),
+                latestOffset: Number( 32400 )
+            });
+            sum += _data[i][1];
+        }
+
+        var data = {};
+        data.earliestTime = null; //buckets[0].earliestTime;
+        data.latestTime = null; //buckets[buckets.length-1].latestTime;
+        data.cursorTime = null; //buckets[0].earliestTime; //cursorTime;
+        data.duration = duration; //duration;
+        data.eventCount = sum; //eventCount;
+        data.eventAvailableCount = sum; //eventAvailableCount;
+        data.isComplete = true; //isComplete;
+        data.buckets = buckets;
+        return data;
+    };
+
+    //timeline.setSeriesColor('0x90ADCC');
+    //timeline.setSeriesColor('0x8B0000');
+    //timeline.setSeriesColor('0x4691D0');
+    //timeline.setSeriesColor('0x73ABDA');
+    //timeline.setSeriesColor('0x8CBBE2');
+    //timeline.setSeriesColor('0x6998DA');
+    //timeline.setSeriesColor('0x5379AF');
+    timeline.setSeriesColor('0x93D9DA');
+    if (window.parent) { // ifrmae 모드일 때 부모페이지에 자신을 등록한다.
+        window.parent.timeline = timeline;
+    }
+
+    // 여백을 클릭할 때 로그 전체선택
+    function selectAll() {
+        if(!(timeline._selectionMaximum || timeline._selectionMinimum)){
+            return;
+        }
+        timeline.clearSelectionRange();
+        timeline.dispatchEvent("selectionChanged", { selectionMinimum: null, selectionMaximum: null });
+    }
+    $('.TimeAxisLabels').click(selectAll);
+    $('.NumericAxisLabels').click(selectAll);
+
+    </script>
+</body>
+</html>

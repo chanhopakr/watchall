@@ -1,0 +1,123 @@
+.x-grid-empty {
+  text-align:center;
+  font-weight:bold;
+  border-bottom: 1px solid #e6e6e6;
+}
+.x-treelist-item-text {
+  font-weight: 600;
+}
+
+.x-treelist-item-selected{
+  .x-treelist-item-text,
+  .x-treelist-item-icon{color:#fff}
+}
+
+.x-tab-main_tab-top{ padding:7px 20px 7px 10px !important}
+.x-tab-active.x-tab-main_tab-top{
+  padding:12px 20px 12px 10px !important;
+  box-shadow: 3px 3px 5px 0 #404345;
+}
+.x-tab-bar-main_tab-top .x-box-scroller-tab-bar-main_tab {margin-top: -5px !important;}
+//.x-panel-body-main_tab{background-color:#fff}
+
+.x-panel-header .x-toolbar-separator{
+  height: 14px;
+  border-style: solid;
+  border-width: 0px 0px 0px 1px;
+  border-left-color: #B6B6B6;
+  margin:0 0 0 10px;
+}
+
+.x-tab-over.x-tab-default,
+.x-tab-over.x-tab {
+  text-decoration: none
+}
+.x-tab-wrap-default.x-tab-arrow:after,
+.x-tab-wrap.x-tab-arrow:after{
+  width: 18px; margin-left: 5px;
+  content: "\f107";
+  font: 16px/1 FontAwesome;
+  color:#fff;
+}
+
+.x-tab-over.x-tab-default .x-tab-arrow:hover{
+  opacity: .8;
+}
+
+
+// Tree list >> level 1 Menu만 표출
+.x-treelist-container, .x-treelist-item-expander{
+  display: none !important;
+}
+
+.box-shadow-left{
+  box-shadow: 3px 3px 5px 0 #404345;
+}
+
+
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-base/sass/src/toolbar/Breadcrumb.scss:1 */
+.x-breadcrumb-btn .x-box-target:first-child {
+    margin: 0;
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-base/sass/src/toolbar/Breadcrumb.scss:7 */
+.x-breadcrumb-btn > .x-btn-split-right > .x-btn-button:after {
+    content: none;
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-base/sass/src/toolbar/Breadcrumb.scss:12 */
+.x-breadcrumb-btn.x-btn-over > .x-btn-split-right > .x-btn-button:after,
+.x-breadcrumb-btn.x-btn-menu-active > .x-btn-split-right > .x-btn-button:after {
+    content: '';
+}
+
+/* Ext.toolbar.Breadcrumb theme hard coding start (It doesn't exist by production build). */
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:406 */
+.x-breadcrumb-btn-default {
+    margin: 0 0 0 0px;
+}
+
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:438 */
+.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-arrow:after {
+    width: 20px;
+    background-image: url(images/breadcrumb/default-arrow.png);
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:444 */
+.x-rtl.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-arrow:after {
+    background-image: url(images/breadcrumb/default-arrow-rtl.png);
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:450 */
+.x-btn-menu-active.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-arrow:after {
+    background-image: url(images/breadcrumb/default-arrow-open.png);
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:455 */
+.x-rtl.x-btn-menu-active.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-arrow:after {
+    background-image: url(images/breadcrumb/default-arrow-open-rtl.png);
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:463 */
+.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-split:after {
+    width: 20px;
+    content: "\f105";
+    font: 16px/1 FontAwesome;
+    color: #46484a;
+    background: none !important;
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:477 */
+.x-rtl.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-split:after {
+    content: "\f104";
+    font: 16px/1 FontAwesome;
+    background: none !important;
+}
+/* /home/zen/projects/enterprise/kt/portscan/web/static/apps/ext/classic/theme-neutral/sass/var/toolbar/Breadcrumb.scss:500 */
+.x-btn-menu-active.x-breadcrumb-btn .x-btn-wrap-plain-toolbar-small.x-btn-split:after {
+    content: "\f107";
+    font: 16px/1 FontAwesome;
+    color: #46484a;
+    background: none !important;
+}
+/* Ext.toolbar.Breadcrumb theme hard coding end. */
+.x-grid-cell {
+  vertical-align: middle !important;
+}
+
+body {
+    font-family: 'KTL', sans-serif !important;
+}

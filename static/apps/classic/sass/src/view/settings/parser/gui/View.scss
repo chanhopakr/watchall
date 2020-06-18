@@ -1,0 +1,134 @@
+.pre_raw{
+  white-space: initial; cursor:pointer; word-break: break-all;
+}
+.log-container{
+  padding:10px;
+  background-color: #eeeeec;
+  .log-text{font-size:15px; line-height:28px; word-spacing: 4px; word-break: break-all;}
+}
+.text-clone{
+  //font-size:15px; line-height:21px;
+  white-space:pre;
+  text-overflow: ellipsis; overflow: hidden; text-align:center;
+  max-width:1000px;
+}
+.text-clone.highlighted-match-selected{background-color: white}
+
+.small-header {
+  padding:4px 10px;
+  .x-window-header-title-default{
+    font-size:12px; line-height:12px; font-weight: bold;
+  }
+}
+
+.highlighted-green{background-color:#d1e69f;}
+.highlighted-yellow{background-color:#fae3a9}
+.highlighted-pink{background-color:#e6a8b4}
+.highlighted-blue{background-color:#b7dced}
+.highlighted-orange{background-color:#f7c8a9}
+.highlighted-salmon{background-color:#f6dad4}
+.highlighted-purple{background-color:#c3bed8}
+.highlighted-existing-match,.highlighted-match,.highlighted-match-selected,.required-text{
+  font-size:15px; line-height:21px;
+  padding:2px 3px 2px;border-radius:8px; cursor:pointer; display:inline; z-index:20000
+}
+.highlighted-match-selected { box-shadow: inset 0 0 2px 2px rgba(82,168,236,.5)}
+.menu-window, .menu-window .x-window-body{overflow: visible;}
+.small_button.x-btn-default-small{padding:3px 2px; min-width:50px; border-radius: .2em}
+.x-mask.customMask{background-color:transparent}
+.small-header {
+  padding:4px 10px !important;
+  .x-window-header-title-default, .x-panel-header-title{
+    font-size:12px; line-height:12px; font-weight: bold;
+  }
+}
+.middle-header {
+  padding:8px 10px !important;
+  .x-window-header-title-default, .x-panel-header-title{
+    font-size:13px; line-height:13px; font-weight: bold;
+  }
+  .x-form-item-label-default, .x-form-item-body-default {
+    min-height:18px; height:18px; padding-top:0;
+  }
+  .x-form-cb-default { margin-top:0 }
+}
+
+
+.green{color:darkslategrey}
+.highlighted-green{background-color:#d1e69f;}
+.highlighted-yellow{background-color:#fae3a9}
+.highlighted-pink{background-color:#e6a8b4}
+.highlighted-blue{background-color:#b7dced}
+.highlighted-orange{background-color:#f7c8a9}
+.highlighted-salmon{background-color:#f6dad4}
+.highlighted-purple{background-color:#c3bed8}
+.highlighted-existing-match,.highlighted-match,.highlighted-match-selected,.required-text{
+  border-radius:8px; cursor:pointer; display:inline;
+}
+.highlighted-match-selected { box-shadow: inset 0 0 2px 2px rgba(82,168,236,.5)}
+
+.form-error-state {
+  line-height: 1;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  cursor: default;
+  padding: 8px 0 0 20px;
+  font-size: 16px;
+}
+
+.x-btn-focus{ border-color: #3892d4;}
+
+td.center_cell{ vertical-align:middle; text-align:center; color:green; font-size:22px }
+td.center_cell .x-action-col-icon { font-size: 25px; height: 25px; width: 25px; cursor: pointer; }
+.virtual_dom{
+  padding:0;
+  //word-spacing: 4px;
+  font-size:15px; font-weight: normal;
+  white-space: pre-wrap;
+  display:inline-block;
+  color:white; background-color: #f00;
+  font-family:Arial;
+  visibility: hidden;
+}
+
+input.template_item{
+  margin:0px; padding:5px 0;
+  //word-spacing: 4px;
+  font-size:15px; font-weight: normal;
+  white-space: pre-wrap;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+
+}
+input.template_item:focus,
+input.template_item.focus {
+  border-bottom: solid 2px #969696;
+}
+
+span.template_item {opacity: .5}
+
+input.error{
+  border: solid 1px #cf4c35;
+  border-style:solid;
+  background-color: #fae3a9;
+}
+
+.none-selected-style .x-grid-with-row-lines .x-grid-item.x-grid-item-selected,
+.none-selected-style .x-grid-with-row-lines .x-grid-item-selected + .x-grid-item
+{
+  background-color: transparent; border-color:transparent
+}
+
+.x-tab-icon-el.x-tab-icon-el-menutab-small.fa.fa-check{
+    color: green;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.x-tab-icon-el.x-tab-icon-el-menutab-small.fa.fa-exclamation-triangle{
+  color: red;
+  font-size: 12px;
+  padding-top: 5px;
+}
+

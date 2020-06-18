@@ -1,0 +1,178 @@
+//.sencha-dash-right-main-container{background-color: #D9E0E7}
+.navbar-logo{
+    color:#00acac;
+    font-size:24px;
+    vertical-align: text-top;
+}
+.text-zenlog_logo{
+    margin-left:10px;
+    display:none;
+}
+
+.expanded .text-zenlog_logo{
+    display: inline-block;
+}
+.navbar-brand {
+    text-align: center;
+    display:block;
+    color:#333;
+    height: 50px;
+    width: 100%;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 50px;
+    text-decoration: none !important;
+    background-color: #fff;
+}
+
+.sidebar-minify-btn {
+    z-index:9999;
+    cursor:pointer;
+    line-height: 20px;
+    display: block;
+    text-decoration: none;
+    position: absolute;
+    bottom:10px; right:0;
+    margin: 10px 0;
+    padding: 5px 20px 5px 10px!important;
+    background: #009687;
+    border-radius: 20px 0 0 20px;
+    i{
+        width: 14px;
+        font-weight: 900;
+        text-align: center;
+        margin:0; color:#fff;
+        line-height: 20px;
+        font-size: 18px;
+    }
+}
+.sidebar-minify-btn:hover {
+    background-color: #69d7c3;
+}
+
+.time-container{
+    background-color:#f2f3f4;
+    border-radius: 10px;
+    border: 1px solid #f2f3f4;
+    padding:5px 10px;
+    font-size:12px;
+    font-weight:normal
+}
+
+.profile-image{width:30px; height: 30px; margin:-5px 10px 0 0; border-radius:30px}
+
+.x-btn.x-btn-pressed.x-btn-transparent_button-small,
+.x-btn.x-btn-menu-active.x-btn-transparent_button-small{background-color:#fff}
+
+.x-btn-transparent_button-small:hover{opacity: .8}
+
+.menu-window, .menu-window .x-window-body{overflow: visible;}
+
+.menu-window .arrow{
+    z-index:20000;
+    border-bottom: 8px solid #333;
+    top: -36px;
+    left: 50%;
+    margin-left:-8px;
+}
+
+.menu-window .arrow, .menu-window .arrow:before {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+}
+
+.menu-window .arrow:before {
+    content: "";
+    display: block;
+    border-bottom: 8px solid #222;
+    top: 1px;
+    left: 0;
+    margin-left: -8px;
+}
+
+.x-css-shadow{box-shadow: none !important;}
+
+.x-fieldset{background-color: #fff}
+
+.x-wrap-cell .x-grid-cell-inner { white-space: pre; }
+
+
+.x-treelist-row, .x-treelist-item-tool{cursor: pointer}
+.x-treelist-item-selected .x-treelist-item-tool,
+.x-treelist-item-selected .x-treelist-item-icon{
+    color: #fff;
+}
+
+.x-tab-bar-plain .x-tab-icon-el-main_tab {
+    color: #fff;
+}
+
+.x-tab-icon-el-main_tab {
+    color: #fff;
+}
+.x-tab-over.x-tab-main_tab {
+    border-color: #000;
+    background-image: none;
+    color: #fff;
+    background-color: #69d7c3;
+}
+.x-tab-over.x-tab-main_tab .x-tab-inner-main_tab {
+    color: #fff;
+}
+
+.x-tool-tool-el {
+    overflow: hidden;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    opacity: 0.8;
+}
+
+.x-boundlist {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #939598;
+    background: #ffffff;
+}
+.x-boundlist-item {
+    padding: 0 10px;
+    font: normal 11px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    line-height: 30px;
+    cursor: pointer;
+    cursor: hand;
+    position: relative;
+    /*allow hover in IE on empty items*/
+    border-width: 1px;
+    border-style: dotted;
+    border-color: #dcddde;
+    color: #333;
+}
+.x-boundlist-selected {
+    color: #ffffff;
+    background: #009687;
+    border-color: #009687;
+}
+.x-boundlist-item-over {
+    color: #ffffff;
+    background: #69d7c3;
+    border-color: #69d7c3;
+}
+
+.x-column-header {
+    border-right: 1px solid #e6e6e6;
+    color: #ffffff;
+    font: 600 12px/16px 'Malgun Gothic', 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    outline: 0;
+    background-image: none;
+    background-color: #939598;
+}
+.x-column-header-over {
+    background-image: none;
+    background-color: #dcddde;
+}

@@ -1,0 +1,53 @@
+.main {
+  animation: fadeIn 2s;
+  background-color: #EDEDEE;
+}
+
+form .title .logo {
+  position: inherit;
+  top: 10px;
+  margin-right: 5px;
+  width: 80px;
+}
+
+form .title span {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.text-focus {
+  color: #e4221e;
+  margin-right: 20px;
+}
+
+.container_column i {
+  color: #666;
+  position: absolute;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.container_column label {
+  display: none;
+}
+
+.container_column input[type=text], input[type=password] {
+  padding: 10px 10px 10px 30px;
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #ccc;
+  font-size: 18px;
+  color: #666;
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.login {
+  background-color: #009687;
+  color: #fff;
+  padding: 14px 20px;
+  width: 100%;
+}

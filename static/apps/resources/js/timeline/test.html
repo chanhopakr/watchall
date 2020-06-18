@@ -1,0 +1,322 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/js/zenlog/timeline/style.css" />
+    <script>
+var $A=function(iterable){
+    if(!iterable)
+        return[];
+    if(iterable.toArray){
+        return iterable.toArray();
+    } else {
+        var results=[];
+        for(var i=0,length=iterable.length;i<length;i++)
+            results.push(iterable[i]);
+        return results;
+    }
+};
+Function.prototype.bind=function(){
+    var __method=this,args=$A(arguments),object=args.shift();
+    return function(){
+        return __method.apply(object,args.concat($A(arguments)));
+    };
+};
+if(!String.prototype.repeat){
+String.prototype.repeat=function(count){
+return new Array(count+1).join(this);};}
+
+if(!String.prototype.reverse){
+String.prototype.reverse=function(){
+return this.split('').reverse().join('');};}
+
+if(!String.prototype.rsplit){
+String.prototype.rsplit=function(sep,limit){
+var sp=this.split(sep);
+if(limit&&sp.length>limit){
+var r=[];
+for(var i=0;i<limit;i++)
+r[i]=sp[sp.length-limit+i];
+return r;}
+return sp;};}
+
+if(!Array.prototype.indexOf){
+Array.prototype.indexOf=function(search,fromIndex){
+if(!fromIndex)fromIndex=0;
+for(var i=0;i<this.length;i++){
+if(this[i]===search)
+return i;}
+return-1;};}
+
+if(!Array.prototype.extend){
+Array.prototype.extend=function(arr){
+for(var i=0;i<arr.length;i++)
+this.push(arr[i]);};}
+
+    </script>
+
+    <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+
+</head>
+<body>
+
+    <div class="SplunkModule FlashTimeline" id="FlashTimeline_0_4_1">                        
+        <div class="TimelineContainer" style="width:100%; height:312px;"></div>
+    </div>
+    <script type="text/javascript" src="/static/js/zenlog/timeline/jg_global.js"></script>
+    <script type="text/javascript" src="/static/js/zenlog/timeline/i18n.js"></script>
+    <script type="text/javascript" src="/static/js/zenlog/timeline/zen.js"></script>
+    <script type="text/javascript" src="/static/js/zenlog/timeline/zen_time.js"></script>
+    <script type="text/javascript" src="/static/js/zenlog/timeline/zen_timeline.js"></script>
+    <script>
+
+
+
+$(document).ready(function() {
+
+        _i18n_locale={
+            "date_formats":{"medium":{"pattern":"yyyy. M. d.","format":"%(yyyy)s. %(M)s. %(d)s."},"full":{"pattern":"yyyy\ub144 M\uc6d4 d\uc77c EEEE","format":"%(yyyy)s\ub144 %(M)s\uc6d4 %(d)s\uc77c %(EEEE)s"},"long":{"pattern":"yyyy\ub144 M\uc6d4 d\uc77c","format":"%(yyyy)s\ub144 %(M)s\uc6d4 %(d)s\uc77c"},"short":{"pattern":"yy. M. d.","format":"%(yy)s. %(M)s. %(d)s."}},
+            "scientific_format":"#E0",
+            "exp_symbol":"E",
+            "eras":{"wide":{"0":"\uc11c\ub825\uae30\uc6d0\uc804","1":"\uc11c\ub825\uae30\uc6d0"},"abbreviated":{"0":"\uae30\uc6d0\uc804","1":"\uc11c\uae30"},"narrow":{"0":"\uae30\uc6d0\uc804","1":"\uc11c\uae30"}},
+            "decimal_symbol":".",
+            "months":{"stand-alone":{"wide":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"},
+            "abbreviated":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"},
+            "narrow":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"}},
+        "format":{"wide":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"},"abbreviated":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"},"narrow":{"1":"1\uc6d4","2":"2\uc6d4","3":"3\uc6d4","4":"4\uc6d4","5":"5\uc6d4","6":"6\uc6d4","7":"7\uc6d4","8":"8\uc6d4","9":"9\uc6d4","10":"10\uc6d4","11":"11\uc6d4","12":"12\uc6d4"}}},
+    "group_symbol":",","days":{"stand-alone":{"wide":{"0":"\uc6d4\uc694\uc77c","1":"\ud654\uc694\uc77c","2":"\uc218\uc694\uc77c","3":"\ubaa9\uc694\uc77c","4":"\uae08\uc694\uc77c","5":"\ud1a0\uc694\uc77c","6":"\uc77c\uc694\uc77c"},"abbreviated":{"0":"\uc6d4\uc694\uc77c","1":"\ud654\uc694\uc77c","2":"\uc218\uc694\uc77c","3":"\ubaa9\uc694\uc77c","4":"\uae08\uc694\uc77c","5":"\ud1a0\uc694\uc77c","6":"\uc77c\uc694\uc77c"},"narrow":{"0":"\uc6d4","1":"\ud654","2":"\uc218","3":"\ubaa9","4":"\uae08","5":"\ud1a0","6":"\uc77c"}},"format":{"wide":{"0":"\uc6d4\uc694\uc77c","1":"\ud654\uc694\uc77c","2":"\uc218\uc694\uc77c","3":"\ubaa9\uc694\uc77c","4":"\uae08\uc694\uc77c","5":"\ud1a0\uc694\uc77c","6":"\uc77c\uc694\uc77c"},"abbreviated":{"0":"\uc6d4","1":"\ud654","2":"\uc218","3":"\ubaa9","4":"\uae08","5":"\ud1a0","6":"\uc77c"},"narrow":{"0":"\uc6d4","1":"\ud654","2":"\uc218","3":"\ubaa9","4":"\uae08","5":"\ud1a0","6":"\uc77c"}}},
+    "datetime_formats":{"null":"{1} {0}"},
+    "percent_format":"#,##0%",
+    "min_week_days":1,
+    "first_week_day":6,
+    "periods":{"am":"\uc624\uc804","pm":"\uc624\ud6c4"},
+    "minus_sign":"-",
+    "time_formats":{"medium":{"pattern":"a h:mm:ss","format":"%(a)s %(h)s:%(mm)s:%(ss)s"},
+        "full":{"pattern":"a hh\uc2dc mm\ubd84 ss\ucd08 v","format":"%(a)s %(hh)s\uc2dc %(mm)s\ubd84 %(ss)s\ucd08 %(v)s"},
+        "long":{"pattern":"a hh\uc2dc mm\ubd84 ss\ucd08 z","format":"%(a)s %(hh)s\uc2dc %(mm)s\ubd84 %(ss)s\ucd08 %(z)s"},
+        "short":{"pattern":"a h:mm","format":"%(a)s %(h)s:%(mm)s"}
+    },
+    "quarters":{"stand-alone":{"wide":{"1":"\uc81c 1/4\ubd84\uae30","2":"\uc81c 2/4\ubd84\uae30","3":"\uc81c 3/4\ubd84\uae30","4":"\uc81c 4/4\ubd84\uae30"},"abbreviated":{"1":"\uc81c 1/4\ubd84\uae30","2":"\uc81c 2/4\ubd84\uae30","3":"\uc81c 3/4\ubd84\uae30","4":"\uc81c 4/4\ubd84\uae30"},"narrow":{"1":"1","2":"2","3":"3","4":"4"}},"format":{"wide":{"1":"\uc81c 1/4\ubd84\uae30","2":"\uc81c 2/4\ubd84\uae30","3":"\uc81c 3/4\ubd84\uae30","4":"\uc81c 4/4\ubd84\uae30"},"abbreviated":{"1":"1\ubd84\uae30","2":"2\ubd84\uae30","3":"3\ubd84\uae30","4":"4\ubd84\uae30"},"narrow":{"1":"1","2":"2","3":"3","4":"4"}}},
+    "plus_sign":"+","number_format":"#,##0.###","locale_name":"ko_KR"};
+
+
+var Splunk = {
+    //_timeZone: TimeZones.LOCAL,
+    //_timeZoneOffset: 0,
+    _paramsToUseAsSettings:[],
+    /*
+    zoomInLink: $("a.zoomIn",this.container).click(this.zoomIn.bind(this)),
+    zoomOutLink: $("a.zoomOut",this.container).click(this.zoomOut.bind(this)),
+    selectAllLink:$("a.selectAll",this.container).click(this.selectAll.bind(this)),
+    */
+
+    LINEAR_SCALE_LABEL:_("Linear scale"),
+    LOG_SCALE_LABEL:_("Log scale"),
+    HIDE_TOGGLE_LABEL:_("Hide"),
+    SHOW_TOGGLE_LABEL:_("Show timeline"),
+    CUSTOM_DATE_FORMATS:{"EEE MMM d":{"day_before_month":"EEE d MMM","ja_JP":"EEE MMM d\u65e5","ko_KR":"EEE MMM d\uc77c","zh_CN":"EEE MMM d\u65e5","zh_TW":"EEE MMM d\u65e5"},"MMMM":{},"yyyy":{"ja_JP":"yyyy\u5e74","ko_KR":"yyyy\ub144","zh_CN":"yyyy\u5e74","zh_TW":"yyyy\u5e74"}},
+
+    formatTooltip: function(earliestTime,latestTime,earliestOffset,latestOffset,eventCount){
+        //var range=new Splunk.TimeRange(earliestTime,latestTime);
+        var tooltip=_(sprintf(
+            ungettext("%(eventCount)s event %(timeRangeString)s","%(eventCount)s events %(timeRangeString)s", eventCount),
+            //{eventCount:format_decimal(eventCount),timeRangeString:range.toConciseString()})
+            {eventCount:format_decimal(eventCount),timeRangeString: 'FIXME' })
+        );
+        return tooltip;
+    },
+    formatSimpleString: function(str){
+        return _(str);
+    },
+    formatNumericString: function(strSingular,strPlural,num){
+        return sprintf(ungettext(strSingular,strPlural,num),this.formatNumber(num));
+    },
+    formatNumber: function(num){
+        var pos=Math.abs(num);
+        if((pos>0)&&((pos<1e-3)||(pos>=1e9)))
+        return format_scientific(num,"##0E0");
+        return format_decimal(num);
+    },
+    formatDate: function(time,timeZoneOffset,dateFormat){
+        if(dateFormat) {
+            var customFormat=this.CUSTOM_DATE_FORMATS[dateFormat];
+            if(customFormat) {
+                var localeName=locale_name();
+                if(customFormat[localeName])
+                    dateFormat=customFormat[localeName];
+                else if(locale_uses_day_before_month()&&customFormat["day_before_month"])
+                    dateFormat=customFormat["day_before_month"];
+            }
+        }
+        return format_date(this.epochToDateTime(time,timeZoneOffset),dateFormat);
+    },
+    formatTime: function(time,timeZoneOffset,timeFormat){
+        if(timeFormat=="full")
+            return format_time_microseconds(this.epochToDateTime(time,timeZoneOffset),timeFormat);
+        return format_time(this.epochToDateTime(time,timeZoneOffset),timeFormat);
+    },
+    formatDateTime:function(time,timeZoneOffset,dateFormat,timeFormat){
+        if(timeFormat=="full")
+            return format_datetime_microseconds(this.epochToDateTime(time,timeZoneOffset),dateFormat,timeFormat);
+        return format_datetime(this.epochToDateTime(time,timeZoneOffset),dateFormat,timeFormat);
+    },
+    getContext: function(){
+        var context=null;
+        if(this.baseContext){
+            context=this.baseContext.clone();
+        }else{
+            if(this.parent){
+                var baseContext=this.parent.getModifiedContext();
+                if(baseContext!=null){
+                if(this.getLoadState()<Splunk.util.moduleLoadStates.HAS_CONTEXT){
+                this.logger.debug(this.moduleType+" - Although we're still loading the page we have to let modules cache contexts.");
+                this.parent.setChildContextFreshness(false);}
+                this.baseContext=baseContext;
+                context=baseContext.clone();}else{
+                var exception_msg=sprintf("getContext was called by %(moduleId)s with no baseContext. %(moduleId)s's parent returned a null context. This should not happen.",this);
+                throw(exception_msg);}
+            }else{
+                context=new Splunk.Context();
+                var search=new Splunk.Search();
+                context.set("search",search);
+            }
+        }
+        for(var i=0,len=this._paramsToUseAsSettings.length;i<len;i++){
+        var pair=this._paramsToUseAsSettings[i];
+        var namespacedKey=pair.namespace+"."+pair.param;
+        if(this.getParam(pair.param)!=null&&!context.has(namespacedKey)){
+        context.set(namespacedKey,this.getParam(pair.param));}}
+        return context;
+    },
+    pushContextToChildren: function($super,explicitContext){
+        var context=explicitContext||this.getModifiedContext();
+        var search=context.get("search");
+        if(!search.isJobDispatched()&&this.requiresDispatch(search)){
+        this.logger.error(this.moduleType,".onContextChange - hit the corner case where a DispatchingModule instance requires dispatch for q=",search.toString(),"timeRange=",search.getTimeRange());
+        this._fireDispatch(search);}else{
+        $super(context);}
+    },
+    onJobProgress:function(event){},
+    onJobDone:function(event){},
+    onJobStatusChange:function(event,status){
+        if(status=='cancel'){
+            this.reset();}
+    },
+    onDataUpdated:function(event){
+        // XXX
+        //alert('done');
+        return;
+        var context=this.getContext();
+        var search=context.get("search");
+        if(search.isJobDispatched()&&search.job.isDone()){
+        if(this.renderMonitor&&(event.updateCount>=this.updateId)){
+        this.renderMonitor.loadComplete();
+        this.renderMonitor=false;}}
+        if(search.isJobDispatched()){
+        this.showDataControls(true);
+        $(".bucketSize",this.container).html(this.getScaleDescription());}
+    },
+    onSelectionChanged:function(event){
+        // XXX
+        return;
+        var context=this.getContext();
+        var search=context.get("search");
+        this.isEntireRangeSelected=false;
+        this.selectAllLink.removeClass("splIconicLinkDisabled");
+        this.zoomInLink.removeClass("splIconicLinkDisabled");
+        if(search.isJobDispatched()){
+            this.pushContextToChildren();
+        }
+    },
+    onResizeStop:function(event,ui){
+        $(event.target).width("100%");
+        this.setParam("height",ui.size.height+"px");
+    },
+    zoomIn:function(evt){
+        if(this.zoomInLink.hasClass('splIconicLinkDisabled'))return false;
+        var range=this.getSelectionRange();
+        if(!range||(range&&range.equalToRange(this.getTimelineRangeFromUTC()))){
+        if(range.getDuration()==1){
+        var messenger=Splunk.Messenger.System.getInstance();
+        messenger.send("info","splunk",_("The timeline can not zoom in to a single millisecond."));
+        this._passTimeRangeToParent(range);
+        return;}
+        this._passTimeRangeToParent(range.zoomIn());}else{
+        this._passTimeRangeToParent(range);}
+        this.selectAll();
+        if(evt.preventDefault)
+        evt.preventDefault();
+    },
+    zoomOut:function(evt){
+        if(this.zoomOutLink.hasClass('splIconicLinkDisabled'))return false;
+        var timelineRange=this.getTimelineRangeFromUTC();
+        if(timelineRange){
+        this._passTimeRangeToParent(timelineRange.zoomOut());}else{
+        this.logger.error(this.moduleType," could not zoom out cause we had an undefined timelineRange");}
+        evt.preventDefault();
+    },
+    selectAll:function(evt){
+        if(this.selectAllLink.hasClass('splIconicLinkDisabled'))return false;
+        var context=this.getContext();
+        var search=context.get("search");
+        $(".controlLinks",this.container).addClass("noSelection");
+        this.selectAllLink.addClass("splIconicLinkDisabled");
+        this.zoomInLink.addClass("splIconicLinkDisabled");
+        this.clearSelectionRange();
+        if(search.isJobDispatched()){
+        this.pushContextToChildren();}
+        if(evt)evt.preventDefault();
+    },
+    logScale:function(evt){
+        $(".linLogLabel",this.container).text(this.LOG_SCALE_LABEL);
+        if(this._timeline)
+            this._timeline.setScaleY("log");
+    },
+    epochToDateTime:function(time,timeZoneOffset){
+        var date=new Date(Math.floor((time+timeZoneOffset)*1000));
+        var dateTime=new DateTime({
+            date:date,
+            year:date.getUTCFullYear(),
+            month:date.getUTCMonth()+1,
+            day:date.getUTCDate(),
+            hour:date.getUTCHours(),
+            minute:date.getUTCMinutes(),
+            second:date.getUTCSeconds(),
+            microsecond:date.getUTCMilliseconds()*1000}
+        );
+        dateTime.weekday=function(){
+            var d=this.date.getUTCDay()-1;
+            if(d<0)
+            d=6;
+            return d;
+        };
+        return dateTime;
+    }
+}; // splunk
+
+        var module = Splunk;
+        module.container = $("#FlashTimeline_0_4_1");
+        var timeline = new splunk.Timeline("/splunkd","");
+        timeline.externalInterface.formatTooltip=module.formatTooltip.bind(module);
+        timeline.externalInterface.formatSimpleString=module.formatSimpleString.bind(module);
+        timeline.externalInterface.formatNumericString=module.formatNumericString.bind(module);
+        timeline.externalInterface.formatNumber=module.formatNumber.bind(module);
+        timeline.externalInterface.formatDate=module.formatDate.bind(module);
+        timeline.externalInterface.formatTime=module.formatTime.bind(module);
+        timeline.externalInterface.formatDateTime=module.formatDateTime.bind(module);
+        //timeline.setTimeZone(Splunk.util.getConfigValue("SERVER_ZONEINFO"));
+        timeline.setTimeZone("### SERIALIZED TIMEZONE FORMAT 1.0;Y30600 NW 4B 53 54;Y32400 NW 4B 53 54;Y32400 YW 4B 44 54;Y28800 NW 4B 53 54;Y36000 YW 4B 44 54;@-2053931400 1;@-1325494800 0;@-1199262600 1;@-498128400 3;@-303984000 2;@-293533200 3;@-264931200 0;@-39515400 1;@547570800 4;@560872800 1;@579020400 4;@592322400 1;$");
+        timeline.setEnableChartClick(true);
+        timeline.addEventListener("updated",module.onDataUpdated.bind(module));
+        timeline.addEventListener("selectionChanged",module.onSelectionChanged.bind(module));
+        timeline.addEventListener("chartDoubleClicked",module.zoomIn.bind(module));
+        timeline.appendTo( $(".TimelineContainer", module.container)[0] );
+        //timeline.setForegroundColor('0x112233');
+        //timeline.setSeriesColor('0xaabbcc');
+        //timeline.setSeriesColor('0x74A056');
+        timeline.setSeriesColor('0x90ADCC');
+        timeline._update();
+
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+.btn-add, .btn-close{cursor:pointer}
+.btn-add:hover{opacity: .8}
+.btn-label{
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor:pointer
+}
+.btn-label:hover{opacity: .8}
+.input-group{
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  .input-group-addon:first-child {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .input-group-addon:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .form-control, .input-group-addon, .input-group-btn {
+    display: table-cell;
+  }
+
+  .form-control:not(:first-child):not(:last-child){
+    border-radius: 0;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    height:32px;
+    padding: 1px 5px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-color: #e4e4e4;
+    border-style: solid none solid none;
+    border-width: 1px;
+    border-radius: 0;
+    position: relative;
+    z-index: 2;
+    float: left;
+    margin-bottom: 0;
+  }
+}
+
+li.selected-item{
+  list-style:none;
+  //background-color: #e4e4e4;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+  padding: 0 5px;
+  cursor:pointer;
+  line-height:21px;
+  span{
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 2px;
+  }
+  span:hover{opacity: .8}
+}
+

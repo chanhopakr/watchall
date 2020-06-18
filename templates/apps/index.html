@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>{{ title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="cpmas,zen,zensystem,zensystems,zensystems.co.kr">
+  <meta name="author" content="zensystems">
+  <meta name="keyword" content="cpmas,zen,zensystem,zensystems,zensystems.co.kr">
+  <link rel="shortcut icon" href="/static/apps/resources/images/KT%20CI.png"/>
+  <link rel="stylesheet" href="/static/apps/resources/js/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/js/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/login/elegant-icons-style.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/login/style.css">
+  <link rel="stylesheet" href="/static/apps/resources/css/login/style-responsive.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/login/loginform.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/login/loginstyle.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/animate.css/animate.css"/>
+  <link rel="stylesheet" href="/static/apps/resources/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+  <!-- TODO password 정책 필요 sha? -->
+  <script type="text/javascript" src="/static/apps/resources/js/CryptoJS/rollups/sha256.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+  <script type="text/javascript" src="/static/apps/resources/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="/static/apps/resources/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/apps/resources/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/cpmas/index.js"></script>
+  <!--검증중 화면전환효과-->
+  <meta http-equiv="Page-Enter" content="blendTrans(Duration=2)">
+  <meta http-equiv="Page-Enter" CONTENT="RevealTrans(Duration=1, Transition=24)">
+  <script type="text/javascript">
+    var message = '{{ message }}';
+    if (message) {
+      alert(message);
+    }
+
+    var redirection = '{{ redirection }}';
+    if (redirection && redirection.length) {
+      window.location.href = redirection;
+    }
+    var PASSWD_LENGTH = '{{ passwd_length }}',
+        PASSWD_ALPHA = '{{ passwd_alpha }}',
+        PASSWD_NUMBER = '{{ passwd_number }}',
+        PASSWD_SPECIAL = '{{ passwd_special }}';
+  </script>
+</head>
+<body class="login-body">
+  <!-- signin form -->
+  <div class="login-main">
+    <div class="logo-text">
+      <div class="animated flipInX" style="margin:0 0 40px;">
+        <!--
+        <span class="text-focus">W</span>atch
+        <span class="text-focus">A</span>ll
+        -->
+      </div>
+    </div>
+    <form id="login-form" action="/signin" method="POST" class="login-form" autocomplete="off" onsubmit="return validateLoginForm()">
+      {% csrf_token %}
+      <div class="index-title">
+        <span class="text-focus">{{ title }}</span> Login
+      </div>
+      <table class="login-form-table">
+        <tr>
+          <td>
+            <input type="text" placeholder="아이디" name="username" class="form-control form-control1" tabindex="1" autofocus>
+          </td>
+          <td rowspan="2">
+            <button type="submit" class="login-btn-submit" tabindex="4">로그인</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="password" placeholder="비밀번호" name="password" class="form-control form-control1" tabindex="2">
+          </td>
+        </tr>
+      </table>
+      <div class="index-apply">
+        <span class="text-focus">{{ title }}</span> Login ID가 없으십니까? 지금
+        <a data-toggle="modal" data-target="#signUpModal" role="button" class="show-signin-btn text-focus">
+          <i class="fa fa-user" aria-hidden="true"></i>생성
+        </a>하세요.
+      </div>
+    </form>
+    <div class="login-label">
+      <span>본 사이트는 Internet Explore 11이상, Chrome, Firefox에 최적화 되어 있습니다.</span>
+    </div>
+    <div class="copyright">Copyright 2020 KT corp. All right reserved.</div>
+  </div>
+
+  <!-- signup modal -->
+  <div id="signUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="margin-bottom: 3%;">
+          <button type="button" class="close" onclick="return closeSignUpForm()">&times;</button>
+          <h1 class="modal-title sign-title text-focus" style="font-weight: bold;">{{ title }} 계정 신청</h1>
+        </div>
+        <div class="modal-body">
+          <form id="signUpForm" action="/signup" method="POST" autocomplete="off" onsubmit="return validateSignUpForm()">
+            {% csrf_token %}
+            <!-- TODO encrypt to password -->
+            <!-- input type="hidden" name="salt" value="{{ salt }}" -->
+            <input type="hidden" name="is_staff" value=true>
+            <input type="hidden" name="is_superuser" value=false>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <input type="text" name="username" class="required form-control control-size-sign" placeholder="아이디" required>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <div style="display: flex; align-items: stretch;">
+                  <div style="flex-grow: 1; margin-right: 5px;">
+                    <input type="password" name="password" class="required form-control control-size-sign" placeholder="비밀번호" required>
+                  </div>
+                  <div style="flex-grow: 1">
+                    <input type="password" name="password_confirm" class="required form-control control-size-sign" placeholder="비밀번호 확인" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <div style="display: flex; align-items: stretch;">
+                  <div style="flex-grow: 1;">
+                    <input type="text" name="first_name" class="required form-control control-size-sign" placeholder="이름" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <input type="tel" name="phone" class="required form-control control-size-sign" placeholder="연락처" required>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <input type="email" name="email" class="required form-control control-size-sign" placeholder="이메일" required>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <input type="text" name="department" class="required form-control control-size-sign" placeholder="부서" required>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12 sign-form-size">
+                <input type="text" name="request_description" class="required form-control control-size-sign" placeholder="신청사유" required>
+              </div>
+            </div>
+            <div class="form-group clearfix btn-sign-padding">
+              <button type="submit" class="btn btn-sign-size">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                가입하기
+              </button>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-sign-size-close" onclick="return closeSignUpForm()">닫기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

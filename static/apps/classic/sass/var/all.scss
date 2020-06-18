@@ -1,0 +1,497 @@
+.chart_symbol{display:inline-block; margin-right:5px; border-radius:10px; width:9px; height:9px}
+.label{padding:2px 7px; border-radius:7px; background-color: #3E3E3E; color:#fff }
+.info{background-color:#49b6d6 }
+.warning{background:#90ca4b}
+.critical, .error{background-color:#F64C4C }
+.major {background-color:#E4902B}
+.minor {background-color:#7D2FB4}
+
+.searchingQueryMenu {
+    padding-left: 5px;
+    .x-menu-item-link{text-decoration: none}
+    .x-menu-item-text{display:block; height:32px}
+    .x-menu-item-icon-default.x-menu-item-icon-right{top:6px; color:red}
+    .x-menu-item-text{
+        max-width:950px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.bg_search {
+    background-color: #f82a2a !important;
+    &:hover {
+        background-color: #b01116 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small,
+    .x-btn-inner-plain-toolbar-small {
+        color: #fff;
+    }
+}
+
+.fieldbreadcrumb_leaf {
+    .x-btn-inner-plain-toolbar-small {
+        color: #f82a2a;
+        font-weight: bold;
+    }
+}
+
+.bg_create{
+    background-color:#00ACAC !important;
+    &:hover{
+        background-color:#008A8A !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_update{
+    background-color:#F59C1A !important;
+    &:hover{
+        background-color:#C47D15 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_delete, .bg_stop, .bg_alarm{
+    background-color:#FF5B57 !important;
+    &:hover{
+        background-color:#CC4946 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_info{
+    background-color:#49B6D6 !important;
+    &:hover{
+        background-color:#3A92AB !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_refresh{
+    background:#90ca4b !important;
+    &:hover{
+        background:#6C9738 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_detail, .bg_export{
+    background-color:#727cb6 !important;
+    &:hover{
+        background-color: #555d88 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_favorite{
+    background-color:#FFD900 !important;
+    &:hover{
+        background-color: #BFA300 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_download{
+    background-color:#B6C2C9 !important;
+    &:hover{
+        background-color:#889197 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.bg_maximize{
+    background-color:#FFFFFF !important;
+    border:solid 1px #D9E0E7 !important;
+    &:hover{
+        background-color: #E2E7EB !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #333333;
+    }
+}
+
+.bg_black{
+    background:#2d353c !important;
+    &:hover{
+        background:#242A30 !important;
+    }
+    .x-btn-icon > .x-btn-icon-el,
+    .x-btn-inner-default-toolbar-small,
+    .x-btn-icon-el-default-toolbar-small,
+    .x-btn-wrap-default-small.x-btn-split-right:after,
+    .x-btn-icon-el-default-small, .x-btn-inner-default-small,
+    .x-btn-icon-el-btn_mini-small, .x-btn-inner-btn_mini-small{
+        color: #ffffff;
+    }
+}
+
+.x-btn-circle-small, .x-btn-circle-medium, .x-btn-circle-large {padding:0 !important; margin-left: 8px}
+.badge{
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+#msg-div {
+    position: absolute;
+    bottom: 20px;
+    //max-height:300px;
+    //overflow: hidden;
+    right:20px;
+    width:350px;
+    z-index:100;
+    padding-bottom:5px;
+    font-size:11px;
+    color: #aaa;
+    .date{
+        font-weight:bold
+    }
+    .msg{
+        opacity: 0;
+        cursor:pointer;
+        border-radius: 8px;
+        background-color:rgba(0,0,0,.8)!important;
+        margin-top: 2px;
+        padding: 8px 10px 10px;
+        .badge{
+            margin-left:5px; margin-top:-2px; background-color:darkcyan;
+        }
+        h3{
+            color:#fff;
+            margin: 0 0 5px;
+            font-weight: bold;
+            font-size: 15px;
+            line-height:20px;
+        }
+        p{
+            margin: 2px 0;
+        }
+    }
+    .pause { float: right; margin-right: 10px; }
+    .close { float: right; }
+}
+
+.pagination {
+    padding-left:0;
+    display: inline-block;
+    & > li{
+        display: inline;
+        list-style-type:none;
+    }
+    a {
+        color: black;
+        float: left;
+        padding: 3px 12px;
+        text-decoration: none;
+
+    }
+    .active a{
+        background-color: #f82a2a !important;
+        &:hover{
+            background-color: #b01116 !important;
+        }
+        font-weight: bold;
+        border-radius: 3px;
+        color:#fff
+    }
+}
+
+.pagination_container{
+    .x-btn-default-toolbar-small{padding:3px}
+}
+
+.disabled-grid-row{
+    opacity: .5;
+    td{ cursor: not-allowed };
+}
+
+.x-progress-blue_progress {
+    background-color: #e6e6e6;
+    border-width: 0;
+    height: 24px;
+    border-color: #26adc4;
+    border-style: solid;
+}
+.x-progress-blue_progress .x-progress-bar-blue_progress {
+    background-image: none;
+    background-color: #26adc4;
+}
+.x-nlg .x-progress-blue_progress .x-progress-bar-blue_progress {
+    background: repeat-x;
+    background-image: url(images/progress/progress-blue_progress-bg.gif);
+}
+.x-progress-blue_progress .x-progress-text {
+    color: #fff;
+    font-weight: 400;
+    font-size: 10px;
+    font-family: Noto Sans, sans-serif;
+    text-align: center;
+    line-height: 24px;
+}
+.x-progress-blue_progress .x-progress-text-back {
+    color: #000;
+    line-height: 24px;
+}
+.x-keyboard-mode .x-progress-blue_progress.x-progress-focus:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 0 solid #5fa2dd;
+    pointer-events: none;
+}
+.x-progressbar-blue_progress-cell > .x-grid-cell-inner,
+.x-progress-blue_progress-cell > .x-grid-cell-inner,
+.x-progressbarwidget-blue_progress-cell > .x-grid-cell-inner {
+    padding-top: 6px;
+    padding-bottom: 5px;
+}
+.x-progressbar-blue_progress-cell > .x-grid-cell-inner .x-progress-blue_progress,
+.x-progress-blue_progress-cell > .x-grid-cell-inner .x-progress-blue_progress,
+.x-progressbarwidget-blue_progress-cell > .x-grid-cell-inner .x-progress-blue_progress {
+    height: 24px;
+}
+
+
+.x-progress-green_progress {
+    background-color: #e6e6e6;
+    border-width: 0;
+    height: 24px;
+    border-color: #97c043;
+    border-style: solid;
+}
+.x-progress-green_progress .x-progress-bar-green_progress {
+    background-image: none;
+    background-color: #97c043;
+}
+.x-nlg .x-progress-green_progress .x-progress-bar-green_progress {
+    background: repeat-x;
+    background-image: url(images/progress/progress-green_progress-bg.gif);
+}
+.x-progress-green_progress .x-progress-text {
+    color: #fff;
+    font-weight: 400;
+    font-size: 10px;
+    font-family: Noto Sans, sans-serif;
+    text-align: center;
+    line-height: 24px;
+}
+.x-progress-green_progress .x-progress-text-back {
+    color: #000;
+    line-height: 24px;
+}
+.x-keyboard-mode .x-progress-green_progress.x-progress-focus:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 0 solid #5fa2dd;
+    pointer-events: none;
+}
+.x-progressbar-green_progress-cell > .x-grid-cell-inner,
+.x-progress-green_progress-cell > .x-grid-cell-inner,
+.x-progressbarwidget-green_progress-cell > .x-grid-cell-inner {
+    padding-top: 6px;
+    padding-bottom: 5px;
+}
+.x-progressbar-green_progress-cell > .x-grid-cell-inner .x-progress-green_progress,
+.x-progress-green_progress-cell > .x-grid-cell-inner .x-progress-green_progress,
+.x-progressbarwidget-green_progress-cell > .x-grid-cell-inner .x-progress-green_progress {
+    height: 24px;
+}
+
+
+.x-progress-orange_progress {
+    background-color: #e6e6e6;
+    border-width: 0;
+    height: 24px;
+    border-color: #dc972c;
+    border-style: solid;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:234 */
+.x-progress-orange_progress .x-progress-bar-orange_progress {
+    background-image: none;
+    background-color: #dc972c;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:242 */
+.x-nlg .x-progress-orange_progress .x-progress-bar-orange_progress {
+    background: repeat-x;
+    background-image: url(images/progress/progress-orange_progress-bg.gif);
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:249 */
+.x-progress-orange_progress .x-progress-text {
+    color: #fff;
+    font-weight: 400;
+    font-size: 10px;
+    font-family: Noto Sans, sans-serif;
+    text-align: center;
+    line-height: 24px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:258 */
+.x-progress-orange_progress .x-progress-text-back {
+    color: #000;
+    line-height: 24px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-base/sass/etc/mixins/css-outline.scss:39 */
+.x-keyboard-mode .x-progress-orange_progress.x-progress-focus:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 0 solid #5fa2dd;
+    pointer-events: none;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:285 */
+.x-progressbar-orange_progress-cell > .x-grid-cell-inner,
+.x-progress-orange_progress-cell > .x-grid-cell-inner,
+.x-progressbarwidget-orange_progress-cell > .x-grid-cell-inner {
+    padding-top: 6px;
+    padding-bottom: 5px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:288 */
+.x-progressbar-orange_progress-cell > .x-grid-cell-inner .x-progress-orange_progress,
+.x-progress-orange_progress-cell > .x-grid-cell-inner .x-progress-orange_progress,
+.x-progressbarwidget-orange_progress-cell > .x-grid-cell-inner .x-progress-orange_progress {
+    height: 24px;
+}
+
+
+.x-progress-purple_progress {
+    background-color: #e6e6e6;
+    border-width: 0;
+    height: 24px;
+    border-color: #9966ff;
+    border-style: solid;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:234 */
+.x-progress-purple_progress .x-progress-bar-purple_progress {
+    background-image: none;
+    background-color: #9966ff;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:242 */
+.x-nlg .x-progress-purple_progress .x-progress-bar-purple_progress {
+    background: repeat-x;
+    background-image: url(images/progress/progress-purple_progress-bg.gif);
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:249 */
+.x-progress-purple_progress .x-progress-text {
+    color: #fff;
+    font-weight: 400;
+    font-size: 10px;
+    font-family: Noto Sans, sans-serif;
+    text-align: center;
+    line-height: 24px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:258 */
+.x-progress-purple_progress .x-progress-text-back {
+    color: #000;
+    line-height: 24px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-base/sass/etc/mixins/css-outline.scss:39 */
+.x-keyboard-mode .x-progress-purple_progress.x-progress-focus:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 0 solid #5fa2dd;
+    pointer-events: none;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:285 */
+.x-progressbar-purple_progress-cell > .x-grid-cell-inner,
+.x-progress-purple_progress-cell > .x-grid-cell-inner,
+.x-progressbarwidget-purple_progress-cell > .x-grid-cell-inner {
+    padding-top: 6px;
+    padding-bottom: 5px;
+}
+/* /home/zen/study/extjs/ext/classic/theme-neutral/sass/var/ProgressBar.scss:288 */
+.x-progressbar-purple_progress-cell > .x-grid-cell-inner .x-progress-purple_progress,
+.x-progress-purple_progress-cell > .x-grid-cell-inner .x-progress-purple_progress,
+.x-progressbarwidget-purple_progress-cell > .x-grid-cell-inner .x-progress-purple_progress {
+    height: 24px;
+}

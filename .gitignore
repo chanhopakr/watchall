@@ -1,0 +1,44 @@
+# Directory
+**/migrations/
+.idea/
+.cache/
+media/
+
+# File extension
+*.DS_Store
+*.orig
+*.bak
+*.tmp
+*.swp
+*.pyc
+*.pyo
+*.pyd
+*.zip
+*.gz
+*.tgz
+*.tar.gz
+*.tbz2
+*.bz2
+*.tar
+*.exe
+*.msi
+*.dmg
+*.pid
+*.log
+*.ipynb
+
+# Sencha
+# static/*/build/
+# static/*/classic.json*
+# static/*/modern.json*
+# static/*/bootstrap.css
+# static/*/bootstrap.js*
+
+# Hidden files
+.env*
+.eslintrc
+.venv
+.prettierrc
+
+# Etc
+test
