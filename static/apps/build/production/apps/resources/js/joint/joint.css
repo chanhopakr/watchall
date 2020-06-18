@@ -1,0 +1,350 @@
+/*
+A complete list of SVG properties that can be set through CSS is here:
+http://www.w3.org/TR/SVG/styling.html
+
+Important note: Presentation attributes have a lower precedence over CSS style rules.
+*/
+
+
+/* .viewport is a <g> node wrapping all diagram elements in the paper */
+.viewport {
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+}
+
+/*
+1. IE can't handle paths without the `d` attribute for bounding box calculation
+2. IE can't even handle 'd' attribute as a css selector (e.g path[d]) so the following rule will
+   break the links rendering.
+
+path:not([d]) {
+    display: none;
+}
+
+*/
+
+
+/* .magnet is an element that can be either source or a target of a link */
+/*
+.magnet {
+   fill: black;
+   fill-opacity: 0;
+   stroke: black;
+   stroke-width: 15;
+   stroke-opacity: 0;
+   pointer-events: visibleStroke;
+   cursor: crosshair;
+   vector-effect: non-scaling-stroke;
+}
+
+.magnet:hover {
+   stroke-opacity: .5;
+}
+*/
+
+[magnet=true]:not(.element) {
+   cursor: crosshair;
+}
+[magnet=true]:not(.element):hover {
+   opacity: .7;
+}
+
+/*
+
+Elements have CSS classes named by their types. E.g. type: basic.Rect has a CSS class "element basic Rect".
+This makes it possible to easilly style elements in CSS and have generic CSS rules applying to
+the whole group of elements. Each plugin can provide its own stylesheet.
+
+*/
+
+.element {
+   /* Give the user a hint that he can drag&drop the element. */
+   cursor: move;
+}
+
+.element * {
+   /* The default behavior when scaling an element is not to scale the stroke in order to prevent the ugly effect of stroke with different proportions. */
+   vector-effect: non-scaling-stroke;
+   user-drag: none;
+}
+
+
+/*
+
+connection-wrap is a <path> element of the joint.dia.Link that follows the .connection <path> of that link.
+In other words, the `d` attribute of the .connection-wrap contains the same data as the `d` attribute of the
+.connection <path>. The advantage of using .connection-wrap is to be able to catch pointer events
+in the neighborhood of the .connection <path>. This is especially handy if the .connection <path> is
+very thin.
+
+*/
+
+.marker-source, .marker-target {
+   /* This makes the arrowheads point to the border of objects even though the transform: scale() is applied on them. */
+   vector-effect: non-scaling-stroke;
+}
+
+/* Paper */
+.paper {
+    position: relative;
+}
+/* Paper */
+
+/*  Highlighting  */
+.joint-highlight-stroke {
+    pointer-events: 'none';
+    vector-effect: non-scaling-stroke;
+    fill: none;
+}
+.joint-highlight-opacity {
+    opacity: 0.3;
+}
+/*  Highlighting  */
+
+/*
+
+Vertex markers are `<circle>` elements that appear at connection vertex positions.
+
+*/
+
+.link .connection-wrap,
+.link .connection {
+   fill: none;
+}
+
+/* <g> element wrapping .marker-vertex-group. */
+.marker-vertices {
+   opacity: 0;
+   cursor: move;
+}
+.marker-arrowheads {
+   opacity: 0;
+   cursor: move;
+   cursor: -webkit-grab;
+   cursor: -moz-grab;
+/*   display: none;   */   /* setting `display: none` on .marker-arrowheads effectivelly switches of links reconnecting */
+}
+.link-tools {
+   opacity: 0;
+   cursor: pointer;
+}
+.link-tools .tool-options {
+   display: none;       /* by default, we don't display link options tool */
+}
+.link:hover .marker-vertices,
+.link:hover .marker-arrowheads,
+.link:hover .link-tools {
+   opacity: 1;
+}
+
+/* <circle> element used to remove a vertex */
+.marker-vertex-remove {
+   cursor: pointer;
+   opacity: .1;
+}
+
+.marker-vertex-group:hover .marker-vertex-remove {
+   opacity: 1;
+}
+
+.marker-vertex-remove-area {
+   opacity: .1;
+   cursor: pointer;
+}
+.marker-vertex-group:hover .marker-vertex-remove-area {
+   opacity: 1;
+}
+
+/*
+Example of custom changes (in pure CSS only!):
+
+Do not show marker vertices at all:  .marker-vertices { display: none; }
+Do not allow adding new vertices: .connection-wrap { pointer-events: none; }
+*/
+
+/* foreignObject inside the elements (i.e joint.shapes.basic.TextBlock) */
+.element .fobj {
+    overflow: hidden;
+}
+.element .fobj body {
+    background-color: transparent;
+    margin: 0px;
+}
+.element .fobj div {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 0px 5px 0px 5px;
+}
+
+/* Paper */
+.paper.joint-theme-dark {
+    background-color: #18191b;
+}
+/* Paper */
+
+/*  Highlighting  */
+.joint-highlight-stroke.joint-theme-dark {
+    stroke: #BF8441;
+    stroke-width: 3px;
+    fill: none;
+}
+/*  Highlighting  */
+
+
+/*  Links  */
+.link.joint-theme-dark .connection-wrap {
+    stroke: #8F8FF3;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    cursor: move;
+}
+.link.joint-theme-dark .connection-wrap:hover {
+    opacity: .4;
+    stroke-opacity: .4;
+}
+.link.joint-theme-dark .connection {
+    stroke-linejoin: round;
+}
+.link.joint-theme-dark .link-tools .tool-remove circle {
+    fill: #F33636;
+}
+.link.joint-theme-dark .link-tools .tool-remove path {
+    fill: white;
+}
+.link.joint-theme-dark .link-tools [event="link:options"] circle {
+    fill: green;
+}
+/* <circle> element inside .marker-vertex-group <g> element */
+.link.joint-theme-dark .marker-vertex {
+    fill: #5652DB;
+}
+.link.joint-theme-dark .marker-vertex:hover {
+    fill: #8E8CE1;
+    stroke: none;
+}
+.link.joint-theme-dark .marker-arrowhead {
+    fill: #5652DB;
+}
+.link.joint-theme-dark .marker-arrowhead:hover {
+    fill: #8E8CE1;
+    stroke: none;
+}
+/* <circle> element used to remove a vertex */
+.link.joint-theme-dark .marker-vertex-remove-area {
+    fill: green;
+    stroke: darkgreen;
+}
+.link.joint-theme-dark .marker-vertex-remove {
+    fill: white;
+    stroke: white;
+}
+/*  Links  */
+/*  Highlighting  */
+.joint-highlight-stroke.joint-theme-default {
+    stroke: #FF0000;
+    stroke-width: 3px;
+}
+/*  Highlighting  */
+
+/*  Links  */
+.link.joint-theme-default .connection-wrap {
+    stroke: #000000;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    cursor: move;
+}
+.link.joint-theme-default .connection-wrap:hover {
+    opacity: .4;
+    stroke-opacity: .4;
+}
+.link.joint-theme-default .connection {
+    stroke-linejoin: round;
+}
+.link.joint-theme-default .link-tools .tool-remove circle {
+    fill: #FF0000;
+}
+.link.joint-theme-default .link-tools .tool-remove path {
+    fill: #FFFFFF;
+}
+
+/* <circle> element inside .marker-vertex-group <g> element */
+.link.joint-theme-default .marker-vertex {
+    fill: #1ABC9C;
+}
+.link.joint-theme-default .marker-vertex:hover {
+    fill: #34495E;
+    stroke: none;
+}
+
+.link.joint-theme-default .marker-arrowhead {
+    fill: #1ABC9C;
+}
+.link.joint-theme-default .marker-arrowhead:hover {
+    fill: #F39C12;
+    stroke: none;
+}
+
+/* <circle> element used to remove a vertex */
+.link.joint-theme-default .marker-vertex-remove {
+    fill: #FFFFFF;
+}
+/*  Links  */
+
+/*  Highlighting  */
+.joint-highlight-stroke.joint-theme-modern {
+    stroke: #FEB663;
+    stroke-width: 3px;
+}
+/*  Highlighting  */
+
+/*  Links  */
+.link.joint-theme-modern .connection-wrap {
+    stroke: #000000;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    cursor: move;
+}
+.link.joint-theme-modern .connection-wrap:hover {
+    opacity: .4;
+    stroke-opacity: .4;
+}
+.link.joint-theme-modern .connection {
+    stroke-linejoin: round;
+}
+.link.joint-theme-modern .link-tools .tool-remove circle {
+    fill: #FF0000;
+}
+.link.joint-theme-modern .link-tools .tool-remove path {
+    fill: #FFFFFF;
+}
+
+/* <circle> element inside .marker-vertex-group <g> element */
+.link.joint-theme-modern .marker-vertex {
+    fill: #1ABC9C;
+}
+.link.joint-theme-modern .marker-vertex:hover {
+    fill: #34495E;
+    stroke: none;
+}
+
+.link.joint-theme-modern .marker-arrowhead {
+    fill: #1ABC9C;
+}
+.link.joint-theme-modern .marker-arrowhead:hover {
+    fill: #F39C12;
+    stroke: none;
+}
+
+/* <circle> element used to remove a vertex */
+.link.joint-theme-modern .marker-vertex-remove {
+    fill: white;
+}
+/*  Links  */

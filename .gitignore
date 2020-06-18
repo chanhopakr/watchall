@@ -28,11 +28,8 @@ media/
 *.ipynb
 
 # Sencha
-# static/*/build/
-# static/*/classic.json*
-# static/*/modern.json*
-# static/*/bootstrap.css
-# static/*/bootstrap.js*
+static/apps/build/development/
+static/apps/build/temp/
 
 # Hidden files
 .env*
